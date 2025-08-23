@@ -79,6 +79,12 @@ const AP_Param::GroupInfo AP_Proximity::var_info[] = {
     // @User: Advanced
     AP_GROUPINFO_FRAME("_ALT_MIN", 25, AP_Proximity, _alt_min, 1.0f, AP_PARAM_FRAME_COPTER | AP_PARAM_FRAME_HELI | AP_PARAM_FRAME_TRICOPTER),
 
+    AP_GROUPINFO("_M_PTS", 34, AP_Proximity, _min_pts, 2),
+    AP_GROUPINFO("_EPSLN", 35, AP_Proximity, _epsilon, 1),
+    AP_GROUPINFO("_ATT_EN", 36, AP_Proximity, _att_enable, 0),
+    AP_GROUPINFO("_MP_OA", 37, AP_Proximity, _m_pts, 1),
+
+
     // @Group: 1
     // @Path: AP_Proximity_Params.cpp
     AP_SUBGROUPINFO(params[0], "1", 21, AP_Proximity, AP_Proximity_Params),
@@ -167,6 +173,14 @@ void AP_Proximity::init()
                 serial_instance++;
             }
             break;
+
+#if AP_Proximity_IRadar_ENABLED
+        case Type::IRadar:
+            state[instance].instance = instance;
+            drivers[instance] = new AP_Proximity_IR24(*this, state[instance]);
+            return;
+
+
 #endif
 #if AP_PROXIMITY_MAV_ENABLED
         case Type::MAV:
