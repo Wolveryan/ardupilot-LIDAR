@@ -50,7 +50,7 @@ public:
     enum class Type {
         None    = 0,
         // 1 was SF40C_v09
-        IRadar = 15
+        IRadar = 15,
         
 #if AP_PROXIMITY_MAV_ENABLED
         MAV     = 2,
