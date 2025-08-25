@@ -96,8 +96,7 @@ public:
 #endif
 #if AP_PROXIMITY_HEXSOONRADAR_ENABLED
         Hexsoon_Radar = 18,
-#endif
-    };
+#endif};
 
     enum class Status {
         NotConnected = 0,
