@@ -51,7 +51,7 @@ public:
         None    = 0,
         // 1 was SF40C_v09
         IRadar = 15
-        }
+        
 #if AP_PROXIMITY_MAV_ENABLED
         MAV     = 2,
 #endif
@@ -96,7 +96,8 @@ public:
 #endif
 #if AP_PROXIMITY_HEXSOONRADAR_ENABLED
         Hexsoon_Radar = 18,
-#endif};
+#endif
+    };
 
     enum class Status {
         NotConnected = 0,
